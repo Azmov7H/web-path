@@ -216,8 +216,8 @@ export type SectionWhereInput = {
   title?: Prisma.StringFilter<"Section"> | string
   order?: Prisma.IntFilter<"Section"> | number
   courseId?: Prisma.IntFilter<"Section"> | number
-  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
   lessons?: Prisma.LessonListRelationFilter
+  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
 }
 
 export type SectionOrderByWithRelationInput = {
@@ -225,8 +225,8 @@ export type SectionOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   order?: Prisma.SortOrder
   courseId?: Prisma.SortOrder
-  course?: Prisma.CourseOrderByWithRelationInput
   lessons?: Prisma.LessonOrderByRelationAggregateInput
+  course?: Prisma.CourseOrderByWithRelationInput
 }
 
 export type SectionWhereUniqueInput = Prisma.AtLeast<{
@@ -237,8 +237,8 @@ export type SectionWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"Section"> | string
   order?: Prisma.IntFilter<"Section"> | number
   courseId?: Prisma.IntFilter<"Section"> | number
-  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
   lessons?: Prisma.LessonListRelationFilter
+  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
 }, "id">
 
 export type SectionOrderByWithAggregationInput = {
@@ -266,8 +266,8 @@ export type SectionScalarWhereWithAggregatesInput = {
 export type SectionCreateInput = {
   title: string
   order: number
-  course: Prisma.CourseCreateNestedOneWithoutSectionsInput
   lessons?: Prisma.LessonCreateNestedManyWithoutSectionInput
+  course: Prisma.CourseCreateNestedOneWithoutSectionsInput
 }
 
 export type SectionUncheckedCreateInput = {
@@ -281,8 +281,8 @@ export type SectionUncheckedCreateInput = {
 export type SectionUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  course?: Prisma.CourseUpdateOneRequiredWithoutSectionsNestedInput
   lessons?: Prisma.LessonUpdateManyWithoutSectionNestedInput
+  course?: Prisma.CourseUpdateOneRequiredWithoutSectionsNestedInput
 }
 
 export type SectionUncheckedUpdateInput = {
@@ -568,8 +568,8 @@ export type SectionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   title?: boolean
   order?: boolean
   courseId?: boolean
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   lessons?: boolean | Prisma.Section$lessonsArgs<ExtArgs>
+  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.SectionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["section"]>
 
@@ -598,8 +598,8 @@ export type SectionSelectScalar = {
 
 export type SectionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "order" | "courseId", ExtArgs["result"]["section"]>
 export type SectionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   lessons?: boolean | Prisma.Section$lessonsArgs<ExtArgs>
+  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.SectionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SectionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -612,8 +612,8 @@ export type SectionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type $SectionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Section"
   objects: {
-    course: Prisma.$CoursePayload<ExtArgs>
     lessons: Prisma.$LessonPayload<ExtArgs>[]
+    course: Prisma.$CoursePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1014,8 +1014,8 @@ readonly fields: SectionFieldRefs;
  */
 export interface Prisma__SectionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  course<T extends Prisma.CourseDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CourseDefaultArgs<ExtArgs>>): Prisma.Prisma__CourseClient<runtime.Types.Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   lessons<T extends Prisma.Section$lessonsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Section$lessonsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  course<T extends Prisma.CourseDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CourseDefaultArgs<ExtArgs>>): Prisma.Prisma__CourseClient<runtime.Types.Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -13,13 +7,144 @@ datasource db {
   provider = "postgresql"
 }
 
+model User {
+  id            Int            @id @default(autoincrement())
+  email         String         @unique
+  name          String
+  password      String
+  createdAt     DateTime       @default(now())
+  avatar        String?
+  role          Role           @default(STUDENT)
+  courses       Course[]       @relation("InstructorCourses")
+  progress      Progress[]
+  reviews       Review[]
+  subscriptions Subscription[]
+}
 
+
+// Course model
+model Course {
+  id            Int            @id @default(autoincrement())
+  title         String
+  slug          String         @unique
+  description   String
+  thumbnail     String?
+  price         Float          @default(0)
+  published     Boolean        @default(false)
+  createdAt     DateTime       @default(now())
+  instructorId  Int
+  instructor    User           @relation("InstructorCourses", fields: [instructorId], references: [id])
+  reviews       Review[]
+  sections      Section[]
+  subscriptions Subscription[]
+}
+
+
+// Section model
+model Section {
+  id       Int      @id @default(autoincrement())
+  title    String
+  order    Int
+  courseId Int
+  lessons  Lesson[]
+  course   Course   @relation(fields: [courseId], references: [id])
+}
+
+
+// Lesson model
+model Lesson {
+  id        Int        @id @default(autoincrement())
+  title     String
+  content   String?
+  videoUrl  String?
+  type      LessonType
+  order     Int
+  sectionId Int
+  section   Section    @relation(fields: [sectionId], references: [id])
+  progress  Progress[]
+  quiz      Quiz?
+}
+
+
+// Progress model
+model Progress {
+  id        Int       @id @default(autoincrement())
+  completed Boolean   @default(false)
+  watchedAt DateTime?
+  userId    Int
+  lessonId  Int
+  lesson    Lesson    @relation(fields: [lessonId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
+
+  @@unique([userId, lessonId])
+}
+
+
+// Quiz model
+model Quiz {
+  id        Int        @id @default(autoincrement())
+  lessonId  Int        @unique
+  questions Question[]
+  lesson    Lesson     @relation(fields: [lessonId], references: [id])
+}
+
+
+// Question model
+model Question {
+  id      Int      @id @default(autoincrement())
+  text    String
+  quizId  Int
+  options Option[]
+  quiz    Quiz     @relation(fields: [quizId], references: [id])
+}
+
+
+// Option model
+model Option {
+  id         Int      @id @default(autoincrement())
+  text       String
+  correct    Boolean  @default(false)
+  questionId Int
+  question   Question @relation(fields: [questionId], references: [id])
+}
+
+
+// Review model
+model Review {
+  id        Int      @id @default(autoincrement())
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+  userId    Int
+  courseId  Int
+  course    Course   @relation(fields: [courseId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, courseId])
+}
+
+// Subscription model
+model Subscription {
+  id       Int                @id @default(autoincrement())
+  status   SubscriptionStatus @default(ACTIVE)
+  startAt  DateTime           @default(now())
+  endAt    DateTime?
+  userId   Int
+  courseId Int
+  course   Course             @relation(fields: [courseId], references: [id])
+  user     User               @relation(fields: [userId], references: [id])
+
+  @@unique([userId, courseId])
+}
+
+// User role enum
 enum Role {
   STUDENT
   INSTRUCTOR
   ADMIN
 }
 
+// Lesson type enum
 enum LessonType {
   VIDEO
   ARTICLE
@@ -27,138 +152,9 @@ enum LessonType {
   QUIZ
 }
 
+// Subscription status enum
 enum SubscriptionStatus {
   ACTIVE
   EXPIRED
   CANCELED
-}
-
-model User {
-  id          Int       @id @default(autoincrement())
-  name        String
-  email       String    @unique
-  password    String
-  role        Role      @default(STUDENT)
-  avatar      String?
-  createdAt   DateTime  @default(now())
-
-  courses     Course[]  @relation("InstructorCourses")
-  progress    Progress[]
-  reviews     Review[]
-  subscriptions Subscription[]
-}
-
-model Course {
-  id          Int       @id @default(autoincrement())
-  title       String
-  slug        String    @unique
-  description String
-  thumbnail   String?
-  price       Float     @default(0)
-  published   Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-
-  instructor  User      @relation("InstructorCourses", fields: [instructorId], references: [id])
-  instructorId Int
-
-  sections    Section[]
-  reviews     Review[]
-  subscriptions Subscription[]
-}
-
-model Section {
-  id        Int      @id @default(autoincrement())
-  title     String
-  order     Int
-
-  course    Course   @relation(fields: [courseId], references: [id])
-  courseId  Int
-
-  lessons   Lesson[]
-}
-
-model Lesson {
-  id          Int        @id @default(autoincrement())
-  title       String
-  content     String?
-  videoUrl    String?
-  type        LessonType
-  order       Int
-
-  section     Section    @relation(fields: [sectionId], references: [id])
-  sectionId   Int
-
-  progress    Progress[]
-  quiz        Quiz?
-}
-
-model Progress {
-  id        Int      @id @default(autoincrement())
-  completed Boolean  @default(false)
-  watchedAt DateTime?
-
-  user      User     @relation(fields: [userId], references: [id])
-  userId    Int
-
-  lesson    Lesson   @relation(fields: [lessonId], references: [id])
-  lessonId  Int
-
-  @@unique([userId, lessonId])
-}
-
-model Quiz {
-  id        Int      @id @default(autoincrement())
-  lesson    Lesson   @relation(fields: [lessonId], references: [id])
-  lessonId  Int @unique
-
-  questions Question[]
-}
-
-model Question {
-  id        Int      @id @default(autoincrement())
-  text      String
-
-  quiz      Quiz     @relation(fields: [quizId], references: [id])
-  quizId    Int
-
-  options   Option[]
-}
-
-model Option {
-  id        Int      @id @default(autoincrement())
-  text      String
-  correct   Boolean @default(false)
-
-  question  Question @relation(fields: [questionId], references: [id])
-  questionId Int
-}
-
-model Review {
-  id        Int      @id @default(autoincrement())
-  rating    Int
-  comment   String?
-  createdAt DateTime @default(now())
-
-  user      User     @relation(fields: [userId], references: [id])
-  userId    Int
-
-  course    Course   @relation(fields: [courseId], references: [id])
-  courseId  Int
-
-  @@unique([userId, courseId])
-}
-
-model Subscription {
-  id        Int      @id @default(autoincrement())
-  status    SubscriptionStatus @default(ACTIVE)
-  startAt   DateTime @default(now())
-  endAt     DateTime?
-
-  user      User     @relation(fields: [userId], references: [id])
-  userId    Int
-
-  course    Course   @relation(fields: [courseId], references: [id])
-  courseId  Int
-
-  @@unique([userId, courseId])
 }
