@@ -16,14 +16,6 @@ export function verifytoken(req) {
 
   const decoded = jwt.verify(token, JWT_SECRET);
 
-  return decoded; 
-  /*
-    {
-      userId: number,
-      email: string,
-      role: string,
-      iat: number,
-      exp: number
-    }
-  */
+  return  decoded
+
 }
