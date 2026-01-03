@@ -257,8 +257,8 @@ export type CourseWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Course"> | Date | string
   instructorId?: Prisma.IntFilter<"Course"> | number
   instructor?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  sections?: Prisma.SectionListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
+  sections?: Prisma.SectionListRelationFilter
   subscriptions?: Prisma.SubscriptionListRelationFilter
 }
 
@@ -273,8 +273,8 @@ export type CourseOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   instructorId?: Prisma.SortOrder
   instructor?: Prisma.UserOrderByWithRelationInput
-  sections?: Prisma.SectionOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
+  sections?: Prisma.SectionOrderByRelationAggregateInput
   subscriptions?: Prisma.SubscriptionOrderByRelationAggregateInput
 }
 
@@ -292,8 +292,8 @@ export type CourseWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Course"> | Date | string
   instructorId?: Prisma.IntFilter<"Course"> | number
   instructor?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  sections?: Prisma.SectionListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
+  sections?: Prisma.SectionListRelationFilter
   subscriptions?: Prisma.SubscriptionListRelationFilter
 }, "id" | "slug">
 
@@ -338,8 +338,8 @@ export type CourseCreateInput = {
   published?: boolean
   createdAt?: Date | string
   instructor: Prisma.UserCreateNestedOneWithoutCoursesInput
-  sections?: Prisma.SectionCreateNestedManyWithoutCourseInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutCourseInput
+  sections?: Prisma.SectionCreateNestedManyWithoutCourseInput
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutCourseInput
 }
 
@@ -353,8 +353,8 @@ export type CourseUncheckedCreateInput = {
   published?: boolean
   createdAt?: Date | string
   instructorId: number
-  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutCourseInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutCourseInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutCourseInput
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutCourseInput
 }
 
@@ -367,8 +367,8 @@ export type CourseUpdateInput = {
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   instructor?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
-  sections?: Prisma.SectionUpdateManyWithoutCourseNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutCourseNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutCourseNestedInput
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutCourseNestedInput
 }
 
@@ -382,8 +382,8 @@ export type CourseUncheckedUpdateInput = {
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   instructorId?: Prisma.IntFieldUpdateOperationsInput | number
-  sections?: Prisma.SectionUncheckedUpdateManyWithoutCourseNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutCourseNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutCourseNestedInput
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutCourseNestedInput
 }
 
@@ -588,8 +588,8 @@ export type CourseCreateWithoutInstructorInput = {
   price?: number
   published?: boolean
   createdAt?: Date | string
-  sections?: Prisma.SectionCreateNestedManyWithoutCourseInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutCourseInput
+  sections?: Prisma.SectionCreateNestedManyWithoutCourseInput
   subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutCourseInput
 }
 
@@ -602,8 +602,8 @@ export type CourseUncheckedCreateWithoutInstructorInput = {
   price?: number
   published?: boolean
   createdAt?: Date | string
-  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutCourseInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutCourseInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutCourseInput
   subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutCourseInput
 }
 
@@ -797,8 +797,8 @@ export type CourseCreateWithoutSubscriptionsInput = {
   published?: boolean
   createdAt?: Date | string
   instructor: Prisma.UserCreateNestedOneWithoutCoursesInput
-  sections?: Prisma.SectionCreateNestedManyWithoutCourseInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutCourseInput
+  sections?: Prisma.SectionCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUncheckedCreateWithoutSubscriptionsInput = {
@@ -811,8 +811,8 @@ export type CourseUncheckedCreateWithoutSubscriptionsInput = {
   published?: boolean
   createdAt?: Date | string
   instructorId: number
-  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutCourseInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutCourseInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutCourseInput
 }
 
 export type CourseCreateOrConnectWithoutSubscriptionsInput = {
@@ -840,8 +840,8 @@ export type CourseUpdateWithoutSubscriptionsInput = {
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   instructor?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
-  sections?: Prisma.SectionUpdateManyWithoutCourseNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutCourseNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateWithoutSubscriptionsInput = {
@@ -854,8 +854,8 @@ export type CourseUncheckedUpdateWithoutSubscriptionsInput = {
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   instructorId?: Prisma.IntFieldUpdateOperationsInput | number
-  sections?: Prisma.SectionUncheckedUpdateManyWithoutCourseNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutCourseNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseCreateManyInstructorInput = {
@@ -877,8 +877,8 @@ export type CourseUpdateWithoutInstructorInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sections?: Prisma.SectionUpdateManyWithoutCourseNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutCourseNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutCourseNestedInput
   subscriptions?: Prisma.SubscriptionUpdateManyWithoutCourseNestedInput
 }
 
@@ -891,8 +891,8 @@ export type CourseUncheckedUpdateWithoutInstructorInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sections?: Prisma.SectionUncheckedUpdateManyWithoutCourseNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutCourseNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutCourseNestedInput
   subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutCourseNestedInput
 }
 
@@ -913,14 +913,14 @@ export type CourseUncheckedUpdateManyWithoutInstructorInput = {
  */
 
 export type CourseCountOutputType = {
-  sections: number
   reviews: number
+  sections: number
   subscriptions: number
 }
 
 export type CourseCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  sections?: boolean | CourseCountOutputTypeCountSectionsArgs
   reviews?: boolean | CourseCountOutputTypeCountReviewsArgs
+  sections?: boolean | CourseCountOutputTypeCountSectionsArgs
   subscriptions?: boolean | CourseCountOutputTypeCountSubscriptionsArgs
 }
 
@@ -937,15 +937,15 @@ export type CourseCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
 /**
  * CourseCountOutputType without action
  */
-export type CourseCountOutputTypeCountSectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SectionWhereInput
+export type CourseCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReviewWhereInput
 }
 
 /**
  * CourseCountOutputType without action
  */
-export type CourseCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ReviewWhereInput
+export type CourseCountOutputTypeCountSectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SectionWhereInput
 }
 
 /**
@@ -967,8 +967,8 @@ export type CourseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   createdAt?: boolean
   instructorId?: boolean
   instructor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  sections?: boolean | Prisma.Course$sectionsArgs<ExtArgs>
   reviews?: boolean | Prisma.Course$reviewsArgs<ExtArgs>
+  sections?: boolean | Prisma.Course$sectionsArgs<ExtArgs>
   subscriptions?: boolean | Prisma.Course$subscriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.CourseCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["course"]>
@@ -1014,8 +1014,8 @@ export type CourseSelectScalar = {
 export type CourseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "description" | "thumbnail" | "price" | "published" | "createdAt" | "instructorId", ExtArgs["result"]["course"]>
 export type CourseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   instructor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  sections?: boolean | Prisma.Course$sectionsArgs<ExtArgs>
   reviews?: boolean | Prisma.Course$reviewsArgs<ExtArgs>
+  sections?: boolean | Prisma.Course$sectionsArgs<ExtArgs>
   subscriptions?: boolean | Prisma.Course$subscriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.CourseCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1030,8 +1030,8 @@ export type $CoursePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name: "Course"
   objects: {
     instructor: Prisma.$UserPayload<ExtArgs>
-    sections: Prisma.$SectionPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
+    sections: Prisma.$SectionPayload<ExtArgs>[]
     subscriptions: Prisma.$SubscriptionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1439,8 +1439,8 @@ readonly fields: CourseFieldRefs;
 export interface Prisma__CourseClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   instructor<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  sections<T extends Prisma.Course$sectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.Course$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sections<T extends Prisma.Course$sectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   subscriptions<T extends Prisma.Course$subscriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1876,30 +1876,6 @@ export type CourseDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
- * Course.sections
- */
-export type Course$sectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Section
-   */
-  select?: Prisma.SectionSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Section
-   */
-  omit?: Prisma.SectionOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SectionInclude<ExtArgs> | null
-  where?: Prisma.SectionWhereInput
-  orderBy?: Prisma.SectionOrderByWithRelationInput | Prisma.SectionOrderByWithRelationInput[]
-  cursor?: Prisma.SectionWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SectionScalarFieldEnum | Prisma.SectionScalarFieldEnum[]
-}
-
-/**
  * Course.reviews
  */
 export type Course$reviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1921,6 +1897,30 @@ export type Course$reviewsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
+}
+
+/**
+ * Course.sections
+ */
+export type Course$sectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Section
+   */
+  select?: Prisma.SectionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Section
+   */
+  omit?: Prisma.SectionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SectionInclude<ExtArgs> | null
+  where?: Prisma.SectionWhereInput
+  orderBy?: Prisma.SectionOrderByWithRelationInput | Prisma.SectionOrderByWithRelationInput[]
+  cursor?: Prisma.SectionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SectionScalarFieldEnum | Prisma.SectionScalarFieldEnum[]
 }
 
 /**

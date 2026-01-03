@@ -196,15 +196,15 @@ export type QuizWhereInput = {
   NOT?: Prisma.QuizWhereInput | Prisma.QuizWhereInput[]
   id?: Prisma.IntFilter<"Quiz"> | number
   lessonId?: Prisma.IntFilter<"Quiz"> | number
-  lesson?: Prisma.XOR<Prisma.LessonScalarRelationFilter, Prisma.LessonWhereInput>
   questions?: Prisma.QuestionListRelationFilter
+  lesson?: Prisma.XOR<Prisma.LessonScalarRelationFilter, Prisma.LessonWhereInput>
 }
 
 export type QuizOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   lessonId?: Prisma.SortOrder
-  lesson?: Prisma.LessonOrderByWithRelationInput
   questions?: Prisma.QuestionOrderByRelationAggregateInput
+  lesson?: Prisma.LessonOrderByWithRelationInput
 }
 
 export type QuizWhereUniqueInput = Prisma.AtLeast<{
@@ -213,8 +213,8 @@ export type QuizWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.QuizWhereInput | Prisma.QuizWhereInput[]
   OR?: Prisma.QuizWhereInput[]
   NOT?: Prisma.QuizWhereInput | Prisma.QuizWhereInput[]
-  lesson?: Prisma.XOR<Prisma.LessonScalarRelationFilter, Prisma.LessonWhereInput>
   questions?: Prisma.QuestionListRelationFilter
+  lesson?: Prisma.XOR<Prisma.LessonScalarRelationFilter, Prisma.LessonWhereInput>
 }, "id" | "lessonId">
 
 export type QuizOrderByWithAggregationInput = {
@@ -236,8 +236,8 @@ export type QuizScalarWhereWithAggregatesInput = {
 }
 
 export type QuizCreateInput = {
-  lesson: Prisma.LessonCreateNestedOneWithoutQuizInput
   questions?: Prisma.QuestionCreateNestedManyWithoutQuizInput
+  lesson: Prisma.LessonCreateNestedOneWithoutQuizInput
 }
 
 export type QuizUncheckedCreateInput = {
@@ -247,8 +247,8 @@ export type QuizUncheckedCreateInput = {
 }
 
 export type QuizUpdateInput = {
-  lesson?: Prisma.LessonUpdateOneRequiredWithoutQuizNestedInput
   questions?: Prisma.QuestionUpdateManyWithoutQuizNestedInput
+  lesson?: Prisma.LessonUpdateOneRequiredWithoutQuizNestedInput
 }
 
 export type QuizUncheckedUpdateInput = {
@@ -454,8 +454,8 @@ export type QuizCountOutputTypeCountQuestionsArgs<ExtArgs extends runtime.Types.
 export type QuizSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   lessonId?: boolean
-  lesson?: boolean | Prisma.LessonDefaultArgs<ExtArgs>
   questions?: boolean | Prisma.Quiz$questionsArgs<ExtArgs>
+  lesson?: boolean | Prisma.LessonDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.QuizCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["quiz"]>
 
@@ -478,8 +478,8 @@ export type QuizSelectScalar = {
 
 export type QuizOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lessonId", ExtArgs["result"]["quiz"]>
 export type QuizInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  lesson?: boolean | Prisma.LessonDefaultArgs<ExtArgs>
   questions?: boolean | Prisma.Quiz$questionsArgs<ExtArgs>
+  lesson?: boolean | Prisma.LessonDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.QuizCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type QuizIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -492,8 +492,8 @@ export type QuizIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $QuizPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Quiz"
   objects: {
-    lesson: Prisma.$LessonPayload<ExtArgs>
     questions: Prisma.$QuestionPayload<ExtArgs>[]
+    lesson: Prisma.$LessonPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -892,8 +892,8 @@ readonly fields: QuizFieldRefs;
  */
 export interface Prisma__QuizClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  lesson<T extends Prisma.LessonDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LessonDefaultArgs<ExtArgs>>): Prisma.Prisma__LessonClient<runtime.Types.Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   questions<T extends Prisma.Quiz$questionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Quiz$questionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  lesson<T extends Prisma.LessonDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LessonDefaultArgs<ExtArgs>>): Prisma.Prisma__LessonClient<runtime.Types.Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
